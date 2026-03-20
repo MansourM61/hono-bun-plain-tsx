@@ -1,0 +1,15 @@
+{
+  "name": "hono+bun+ts+tsx",
+  "version": "00.00.00",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^4.12.8"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
