@@ -1,15 +1,23 @@
 {
-  "name": "hono+bun+ts+tsx",
-  "version": "00.00.00",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "bun run --hot src/index.ts"
-  },
-  "dependencies": {
-    "hono": "^4.12.8"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  }
+    "name": "hono+bun+ts+tsx",
+    "version": "00.00.00",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "bun run --hot src/index.ts",
+        "prepare": "husky",
+        "format": "bunx prettier . --write"
+    },
+    "dependencies": {
+        "hono": "^4.12.8"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.4.0",
+        "prettier": "3.8.1"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
 }
