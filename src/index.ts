@@ -2,7 +2,9 @@ import { Hono } from 'hono'
 import { html } from 'hono/html'
 import { proxy } from 'hono/proxy'
 import { matchedRoutes, routePath, baseRoutePath, basePath } from 'hono/route'
+import { custMiddleware, custMiddlewareWithParam } from './middleware'
 import * as extra from './extra'
+import * as urlPath from './route'
 
 const app = new Hono()
 
@@ -23,8 +25,8 @@ app.use(
 )
 
 /** Custom Middleware */
-// custom middleware applied to all routes
-app.use(async (_, next) => {
+// custom inline middleware applied to all routes
+app.use(async (_c, next) => {
     // middleware start: called before the handler
     //...
 
@@ -34,6 +36,12 @@ app.use(async (_, next) => {
     // middleware 1 end: called after the handler
     // ...
 })
+
+// custom middleware created by factory
+app.use(custMiddleware)
+
+// custom middleware with parameter created by factory
+app.use(custMiddlewareWithParam('Good evening!'))
 
 /** Route Handlers */
 // GET method handler
@@ -63,6 +71,10 @@ app.get('/posts/:id', (c) => {
         basePath: basePath(c), // '/api' (with actual params)
     })
 })
+
+// GET method handler
+// use of bundled route handler
+app.get('/route', ...urlPath.default)
 
 // proxy handler
 // redirects to another link

@@ -10,3 +10,6 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 4. `tsconfig.json` is updated (commit: `Hono project is scaffolded.`).
 5. Prettier is setup to work with git `pre-commit` hook (commit: `Prettier and git hook is setup.`).
 6. Basic supports for JSX, HTML, Routing, reverse proxy, static files, etc are added (commit: `Hono server is equipped with basic features (route, JSX, HTML, reverse proxy, static files, etc).`).
+7. Vitest support is added (commit: `Vitest support is added.`).
+8. Custom middleware in a separate file with type support is added.
+9. Route handler in a separate file with independent middleware, handler and type support is added (commit: `Middleware and route handler in separate files are added.`)
