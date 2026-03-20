@@ -9,3 +9,4 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 3. A Hono project based on Bun template is created.
 4. `tsconfig.json` is updated (commit: `Hono project is scaffolded.`).
 5. Prettier is setup to work with git `pre-commit` hook (commit: `Prettier and git hook is setup.`).
+6. Basic supports for JSX, HTML, Routing, reverse proxy, static files, etc are added (commit: `Hono server is equipped with basic features (route, JSX, HTML, reverse proxy, static files, etc).`).
