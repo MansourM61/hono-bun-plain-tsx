@@ -5,13 +5,20 @@
     "type": "module",
     "scripts": {
         "dev": "bun run --hot src/index.ts",
+        "convert": "bun run clean && tsc --build",
+        "build": "bun run clean && bun build --minify ./src/index.ts --outdir ./dist --target bun",
+        "compile": "bun build src/index.ts --compile --outfile ./dist/index",
+        "preview": "cross-env NODE_ENV=production bun dist/index.js",
+        "exec": "./dist/index",
         "test": "vitest",
         "prepare": "husky",
-        "format": "bunx prettier . --write"
+        "format": "bunx prettier . --write",
+        "clean": "rimraf ./dist"
     },
     "dependencies": {
         "@hono/node-server": "^1.19.11",
         "@hono/standard-validator": "^0.2.2",
+        "cross-env": "^10.1.0",
         "hono": "^4.12.8",
         "zod": "^4.3.6"
     },
@@ -20,6 +27,7 @@
         "husky": "^9.1.7",
         "lint-staged": "^16.4.0",
         "prettier": "3.8.1",
+        "rimraf": "^6.1.3",
         "vitest": "^4.1.0"
     },
     "lint-staged": {

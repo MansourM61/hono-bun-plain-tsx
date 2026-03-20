@@ -1,2 +1,9 @@
 # deps
 node_modules/
+
+# MacOS
+.DS_Store
+
+# build
+dist/
+tsconfig.tsbuildinfo
