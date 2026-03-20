@@ -1,21 +1,28 @@
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/bun'
-import { html, raw } from 'hono/html'
+import { html } from 'hono/html'
 import { proxy } from 'hono/proxy'
 import { matchedRoutes, routePath, baseRoutePath, basePath } from 'hono/route'
 import * as extra from './extra'
 
 const app = new Hono()
 
+/** Static File */
 // serve `public` folder as the `/static` route
+// `vitest` works in Node environment. So I have use the proper version of
+// static server package.
+const isNodeEnv = typeof Bun === 'undefined'
+const staticServer = await (isNodeEnv
+    ? import('@hono/node-server/serve-static')
+    : import('hono/bun'))
 app.use(
     '/static/*',
-    serveStatic({
+    staticServer.serveStatic({
         root: './',
         rewriteRequestPath: (path) => path.replace(/^\/static/, '/public'),
     })
 )
 
+/** Custom Middleware */
 // custom middleware applied to all routes
 app.use(async (_, next) => {
     // middleware start: called before the handler
@@ -28,6 +35,7 @@ app.use(async (_, next) => {
     // ...
 })
 
+/** Route Handlers */
 // GET method handler
 // response: plain text
 app.get('/', (c) => {
@@ -81,3 +89,6 @@ export default {
     port: 3000,
     fetch: app.fetch,
 }
+
+// export used in tests
+export { app }
