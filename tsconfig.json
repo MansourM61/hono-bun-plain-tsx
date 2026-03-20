@@ -1,12 +1,15 @@
 {
-  "compilerOptions": {
-    "types": ["bun"],
-    "strict": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
-    "paths": {
-        "@/*": ["./*"],
-        "@src/*": ["./src/*"]
+    "compilerOptions": {
+        "types": ["bun"],
+        "strict": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "hono/jsx",
+        "paths": {
+            "@/*": ["./*"],
+            "@src/*": ["./src/*"],
+            "@lib/*": ["./src/lib/*"],
+            "@middleware/*": ["./src/middleware/*"],
+            "@routes/*": ["./src/routes/*"]
+        }
     }
-  }
 }
