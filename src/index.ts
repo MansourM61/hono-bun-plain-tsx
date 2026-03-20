@@ -2,11 +2,21 @@ import { Hono } from 'hono'
 import { html } from 'hono/html'
 import { proxy } from 'hono/proxy'
 import { matchedRoutes, routePath, baseRoutePath, basePath } from 'hono/route'
-import { custMiddleware, custMiddlewareWithParam } from './middleware'
-import * as extra from './extra'
-import * as urlPath from './route'
+import {
+    custMiddleware,
+    custMiddlewareWithParam,
+} from './middleware/middleware'
+import * as jsxRoute from './routes/jsx-route'
+import * as urlPath from './routes/ind-route'
+import { cors } from 'hono/cors'
+import { validator } from 'hono/validator'
+import { bodyObj, paramObj } from './lib/data'
+import { sValidator } from '@hono/standard-validator'
 
 const app = new Hono()
+
+// enable CORS for specific routes
+app.use('/api/*', cors())
 
 /** Static File */
 // serve `public` folder as the `/static` route
@@ -72,6 +82,40 @@ app.get('/posts/:id', (c) => {
     })
 })
 
+// POST method handler
+// validate body and query parameter
+// response: JSON
+app.post(
+    '/api',
+    // Validate the JSON body
+    validator('json', async (value, c) => {
+        const parsed = await bodyObj.safeParseAsync(value)
+
+        if (!parsed.success) {
+            return c.text('Invalid tester details!', 401)
+        }
+
+        const rawData = parsed.data
+
+        return rawData
+    }),
+    // Validate the query (search) parameter
+    sValidator('query', paramObj),
+    // Handle the request and start with validating the body and query
+    async (c) => {
+        const { param } = c.req.valid('query')
+        const { param_1, param_2 } = c.req.valid('json')
+
+        return c.json({
+            queryParam: param,
+            body: {
+                param_1,
+                param_2,
+            },
+        })
+    }
+)
+
 // GET method handler
 // use of bundled route handler
 app.get('/route', ...urlPath.default)
@@ -94,7 +138,7 @@ app.onError((err, c) => {
 })
 
 // Add the routes, APIs, etc to the server
-app.route('/extra', extra.default)
+app.route('/extra', jsxRoute.default)
 
 // export used by Bun server
 export default {

@@ -1,8 +1,6 @@
 import { Hono } from 'hono'
 import type { FC } from 'hono/jsx'
 
-const app = new Hono()
-
 // layout component
 const Layout: FC = (props) => {
     return (
@@ -28,7 +26,7 @@ const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
 
 // GET method handler
 // response: converted JSX
-app.get('/', (c) => {
+const app = new Hono().get('/', (c) => {
     const messages = ['Bun', 'Hono', 'Vite', 'React']
     return c.html(<Top messages={messages} />)
 })
