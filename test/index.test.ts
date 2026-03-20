@@ -20,12 +20,26 @@ describe('Framework Routes', () => {
 
 // framework test @ client side
 describe('Framework Test @ Client Side', () => {
+    const client = testClient(app)
+
     test('GET /static/sample.txt is ok!', async () => {
-        const client = testClient(app)
-        const searchParam = 1
+        const searchParam = '1'
         const bodyParam: BodyObj = {
             param_1: 'val 1',
             param_2: 'val 2',
         }
+
+        const res = await client.api.$post({
+            json: bodyParam,
+            query: {
+                param: searchParam,
+            },
+        })
+
+        expect(res.status).toBe(200)
+        expect(await res.json()).toStrictEqual({
+            queryParam: searchParam,
+            body: bodyParam,
+        })
     })
 })

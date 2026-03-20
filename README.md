@@ -15,3 +15,4 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 9. Route handler in a separate file with independent middleware, handler and type support is added (commit: `Middleware and route handler in separate files are added.`).
 10. Zod validation is added for query parameter and body content (commit: `Zod validation is added.`).
 11. The modules are re-arranged and re-written to support inferring types (commit: `Code re-arranged to support inferring types.`).
+12. Client side test with full type support is added (commit: `Client side test is added.`).
