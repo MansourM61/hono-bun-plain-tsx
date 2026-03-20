@@ -1,34 +1,59 @@
+/**
+ * Server entry point
+ */
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import staticServer from '@middleware/static'
-import { custMiddleware, custMiddlewareWithParam } from '@middleware/middleware'
-import handlers from '@routes/ind-route'
+import indRoute from '@routes/ind-route'
 import jsxRoute from '@routes/jsx-route'
 import router from '@routes/router'
 import specials from '@routes/specials'
+import middleware, { custIndMiddleware } from '@middleware/middleware'
+import error from '@routes/error'
+import { loadBunEnv } from '@lib/utils'
+import { defaultPort } from '@lib/constants'
 
 const app = new Hono()
-    // enable CORS for specific routes
-    .use('/api/*', cors())
+    // apply individual middleware
+    .use(staticServer())
 
-    // serving static files
-    .use('/static/*', staticServer())
+    .use(custIndMiddleware)
 
-    // middlewares
-    .use(custMiddleware)
-    .use(custMiddlewareWithParam('Test'))
+    // apply CORS for a specific route
+    .use('/extra/*', cors())
 
-    // use of bundled route handler
-    .all('/route', ...handlers)
+    // apply middleware bundle to top-level (applies to all subsequent routes)
+    .route('/', middleware)
+
+    // independent route
+    .route('/ind', indRoute)
 
     // use of a separate routes
     .route('/extra', jsxRoute)
     .route('/', router)
+
+    // error boundary
+    .route('/error', error)
+
+    // global error handler, etc
     .route('/', specials)
+
+    // `Not Found` handler
+    // must be at the top level
+    .notFound((c) => {
+        return c.text('Custom 404 Message', 404)
+    })
+
+    // uncaught errors global handler
+    .onError((err, c) => {
+        console.error(`${err}`)
+        console.log('Error handling @ global')
+        return c.text('Custom Error Message', 500)
+    })
 
 // export used by Bun server
 export default {
-    port: 3000,
+    port: parseInt(loadBunEnv('PORT', defaultPort)),
     fetch: app.fetch,
 }
 

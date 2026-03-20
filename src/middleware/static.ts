@@ -1,5 +1,6 @@
-import { Hono } from 'hono'
-
+/**
+ * Static data server
+ */
 // `vitest` works in Node environment. So I have use the proper version of
 // static server package.
 const isNodeEnv = typeof Bun === 'undefined'
@@ -7,7 +8,7 @@ const staticServer = await (isNodeEnv
     ? import('@hono/node-server/serve-static')
     : import('hono/bun'))
 
-/** Static File */
+// static file server used as a middleware
 export default () =>
     // serve `public` folder as the `/static` route
     staticServer.serveStatic({

@@ -16,3 +16,7 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 10. Zod validation is added for query parameter and body content (commit: `Zod validation is added.`).
 11. The modules are re-arranged and re-written to support inferring types (commit: `Code re-arranged to support inferring types.`).
 12. Client side test with full type support is added (commit: `Client side test is added.`).
+13. `.env` files are added.
+14. Separate files for functions, data types, constants are created in `@lib` folder.
+15. Global and local error handlers are added.
+16. GLobal and local handlers to deal with page-not-found events (commit: `.env files are added; local and global error handling and `Not Found` are added; local and global CORS are added; code is tidied up.`).

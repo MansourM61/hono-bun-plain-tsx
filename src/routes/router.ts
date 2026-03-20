@@ -1,9 +1,14 @@
+/**
+ * Common route handling GET and POST methods with different responses (plain text, HTML, JSON).
+ * Query and body parameters validated using Hono validator and Zod.
+ */
 import { sValidator } from '@hono/standard-validator'
 import { Hono } from 'hono'
 import { validator } from 'hono/validator'
 import { html } from 'hono/html'
 import { routePath, matchedRoutes, baseRoutePath, basePath } from 'hono/route'
 import { bodyObj, paramObj } from '@lib/data'
+import { cors } from 'hono/cors'
 
 /** Route Handlers */
 const app = new Hono()
@@ -22,6 +27,9 @@ const app = new Hono()
                 <h1>Hello! ${username}!</h1>`
         )
     })
+
+    // apply CORS for a specific route
+    .use('/posts/*', cors())
 
     // GET method
     // response: JSON
