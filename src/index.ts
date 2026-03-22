@@ -10,8 +10,9 @@ import router from '@routes/router'
 import specials from '@routes/specials'
 import middleware, { custIndMiddleware } from '@middleware/middleware'
 import error from '@routes/error'
-import { loadBunEnv } from '@lib/utils'
+import { isDevMode, loadBunEnv } from '@lib/utils'
 import { defaultPort } from '@lib/constants'
+import docs from '@routes/docs'
 
 const app = new Hono()
     // apply individual middleware
@@ -50,6 +51,12 @@ const app = new Hono()
         console.log('Error handling @ global')
         return c.text('Custom Error Message', 500)
     })
+
+// enable OpenAPI documentation only in `development` mode
+if (isDevMode()) {
+    // Swagger UI
+    app.route('/doc', docs)
+}
 
 // export used by Bun server
 export default {

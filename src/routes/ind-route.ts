@@ -28,4 +28,8 @@ const handlers = factory.createHandlers(logger(), middleware, (c) => {
 // use of bundled route handler
 const app = new Hono().get('/route', ...handlers)
 
+// export used to perform routing
 export default app
+
+// export used to generate OpenAPI document
+export type AppType = typeof app

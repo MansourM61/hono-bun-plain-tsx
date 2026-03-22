@@ -31,7 +31,7 @@ const app = new Hono()
     // apply CORS for a specific route
     .use('/posts/*', cors())
 
-    // GET method
+    // GET method handler
     // response: JSON
     // route helpers included
     .get('/posts/:id', (c) => {
@@ -44,8 +44,8 @@ const app = new Hono()
     })
 
     // POST method handler
-    // validate body and query parameter
     // response: JSON
+    // validate body and query parameter
     .post(
         '/api',
         // Validate the JSON body
@@ -77,4 +77,8 @@ const app = new Hono()
         }
     )
 
+// export used to perform routing
 export default app
+
+// export used to generate OpenAPI document
+export type AppType = typeof app

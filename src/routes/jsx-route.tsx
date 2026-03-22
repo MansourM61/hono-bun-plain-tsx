@@ -34,4 +34,8 @@ const app = new Hono().get('/', (c) => {
     return c.html(<Top messages={messages} />)
 })
 
+// export used to perform routing
 export default app
+
+// export used to generate OpenAPI document
+export type AppType = typeof app

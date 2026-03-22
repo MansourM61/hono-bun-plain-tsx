@@ -1,0 +1,345 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "hono-bun-plain-tsx API",
+        "version": "00.00.00"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3200"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Error Routes"
+        },
+        {
+            "name": "Individual Routes"
+        },
+        {
+            "name": "JSX Routes"
+        },
+        {
+            "name": "Common Routes"
+        }
+    ],
+    "paths": {
+        "/error": {
+            "get": {
+                "summary": "Throws an error to test error catching",
+                "responses": {
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "enum": ["No error thi time!"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Throws an error",
+                "tags": ["Error Routes"]
+            }
+        },
+        "/error/*": {
+            "all": {
+                "summary": "Auto-generated ALL *",
+                "responses": {
+                    "404": {
+                        "description": "Status 404",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "enum": ["This route is not found here!"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": ["Error Routes"]
+            }
+        },
+        "/ind/route": {
+            "get": {
+                "summary": "Individual route summary",
+                "responses": {
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Independent Route with middleware, handler, etc"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Individual route description",
+                "tags": ["Individual Routes"]
+            }
+        },
+        "/extra": {
+            "get": {
+                "summary": "JSX route summary",
+                "responses": {
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "description": "JSX route description",
+                "tags": ["JSX Routes"]
+            }
+        },
+        "/": {
+            "get": {
+                "summary": "GET method handler",
+                "responses": {
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "enum": ["Hello Hono!"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Response: plain text",
+                "tags": ["Common Routes"]
+            }
+        },
+        "/param/{username}": {
+            "get": {
+                "summary": "GET method handler",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "description": "Response: plain text",
+                "tags": ["Common Routes"]
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "summary": "GET method handler",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "routePath": {
+                                            "type": "string"
+                                        },
+                                        "matchedRoutes": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "basePath": {},
+                                                    "path": {},
+                                                    "method": {},
+                                                    "handler": {}
+                                                },
+                                                "required": [
+                                                    "basePath",
+                                                    "path",
+                                                    "method",
+                                                    "handler"
+                                                ]
+                                            }
+                                        },
+                                        "baseRoutePath": {},
+                                        "basePath": {}
+                                    },
+                                    "required": [
+                                        "routePath",
+                                        "matchedRoutes",
+                                        "baseRoutePath",
+                                        "basePath"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Response: JSON, Route helpers included",
+                "tags": ["Common Routes"]
+            }
+        },
+        "/api": {
+            "post": {
+                "summary": "POST method handler",
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "param_1": {
+                                        "type": "string"
+                                    },
+                                    "param_2": {}
+                                },
+                                "required": ["param_1", "param_2"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Status 400",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "enum": [false]
+                                        },
+                                        "error": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "path": {
+                                                        "oneOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "oneOf": [
+                                                                        {},
+                                                                        {
+                                                                            "type": "number"
+                                                                        },
+                                                                        {},
+                                                                        {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "key": {
+                                                                                    "oneOf": [
+                                                                                        {},
+                                                                                        {},
+                                                                                        {}
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "key"
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "required": ["message"]
+                                            }
+                                        },
+                                        "data": {}
+                                    },
+                                    "required": ["success", "error", "data"]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Status 401",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "enum": ["Invalid tester details!"]
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Default fallback response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "queryParam": {
+                                            "type": "string"
+                                        },
+                                        "body": {
+                                            "type": "object",
+                                            "properties": {
+                                                "param_1": {},
+                                                "param_2": {}
+                                            },
+                                            "required": ["param_1", "param_2"]
+                                        }
+                                    },
+                                    "required": ["queryParam", "body"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Response: JSON, Validates body and query parameters",
+                "tags": ["Common Routes"]
+            }
+        }
+    }
+}

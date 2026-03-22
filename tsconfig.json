@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         /* project directories */
-        "rootDir": "./src",
+        "rootDir": "./",
         "outDir": "./dist",
         /* added types from @types */
         "types": ["bun"],
@@ -21,6 +21,7 @@
         "declaration": true,
         "sourceMap": true,
         "declarationMap": true,
+        "verbatimModuleSyntax": true,
         /* JSX/TSX Syntax */
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
@@ -34,7 +35,7 @@
         }
     },
     /** source files */
-    "file": ["./src/index.ts"],
-    "include": ["./src/**/*.ts"],
+    "file": ["./src/index.ts", "./hono.docs.ts"],
+    "include": ["./src/**/*.ts", "hono.docs.ts"],
     "exclude": ["src/**/*.test.*"]
 }

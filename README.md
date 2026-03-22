@@ -21,3 +21,5 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 15. Global and local error handlers are added.
 16. GLobal and local handlers to deal with page-not-found events (commit: `.env files are added; local and global error handling and `Not Found` are added; local and global CORS are added; code is tidied up.`).
 17. Build scripts are added to `package.json` (commit: `Build scripts are added.`).
+18. OpenAPI documentation generation is added.
+19. Scalar and Swagger UIs are added (commit: `OpenAPI documentation generation, and scalar/swagger UI are added.`).

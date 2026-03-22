@@ -6,8 +6,12 @@ import { Hono } from 'hono'
 
 const app = new Hono()
     .get('/', (c) => {
-        console.warn('Throwing Error!!!')
-        throw new Error('<<< This is an error message >>>')
+        if (Math.random() < 0.5) {
+            console.warn('Throwing Error!!!')
+            throw new Error('<<< This is an error message >>>')
+        } else {
+            return c.text('No error thi time!')
+        }
     })
 
     // uncaught errors handler
@@ -23,4 +27,8 @@ const app = new Hono()
         return c.text('This route is not found here!', 404)
     })
 
+// export used to perform routing
 export default app
+
+// export used to generate OpenAPI document
+export type AppType = typeof app
