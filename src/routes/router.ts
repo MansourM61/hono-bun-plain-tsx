@@ -3,12 +3,12 @@
  * Query and body parameters validated using Hono validator and Zod.
  */
 import { sValidator } from '@hono/standard-validator'
-import { Hono } from 'hono'
-import { validator } from 'hono/validator'
-import { html } from 'hono/html'
-import { routePath, matchedRoutes, baseRoutePath, basePath } from 'hono/route'
 import { bodyObj, paramObj } from '@lib/data'
+import { Hono } from 'hono'
 import { cors } from 'hono/cors'
+import { html } from 'hono/html'
+import { basePath, baseRoutePath, matchedRoutes, routePath } from 'hono/route'
+import { validator } from 'hono/validator'
 
 /** Route Handlers */
 const app = new Hono()

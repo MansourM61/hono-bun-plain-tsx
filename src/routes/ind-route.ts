@@ -8,7 +8,7 @@ import { logger } from 'hono/logger'
 const factory = createFactory()
 
 // custom middleware dedicated to this individual route
-const middleware = factory.createMiddleware(async (c, next) => {
+const middleware = factory.createMiddleware(async (_c, next) => {
     // middleware start: called before the handler
     //...
     console.log('independent middleware')

@@ -1,11 +1,12 @@
 /**
  * Documentation generator based on OpenAPI/Swagger
  */
-import { Hono } from 'hono'
-import { Scalar } from '@scalar/hono-api-reference'
-import { swaggerUI } from '@hono/swagger-ui'
+
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { swaggerUI } from '@hono/swagger-ui'
+import { Scalar } from '@scalar/hono-api-reference'
+import { Hono } from 'hono'
 
 const app = new Hono()
     // OpenAPI Swagger UI

@@ -16,7 +16,7 @@ const app = new Hono()
 
     // uncaught errors handler
     // local handler
-    .onError((err, c) => {
+    .onError((err, _c) => {
         console.error(`${err}`)
         console.log('Error handling @ error route')
         throw new Error(err.message)

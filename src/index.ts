@@ -1,18 +1,19 @@
 /**
  * Server entry point
  */
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
+
+import { defaultPort } from '@lib/constants'
+import { isDevMode, loadBunEnv } from '@lib/utils'
+import middleware, { custIndMiddleware } from '@middleware/middleware'
 import staticServer from '@middleware/static'
+import docs from '@routes/docs'
+import error from '@routes/error'
 import indRoute from '@routes/ind-route'
 import jsxRoute from '@routes/jsx-route'
 import router from '@routes/router'
 import specials from '@routes/specials'
-import middleware, { custIndMiddleware } from '@middleware/middleware'
-import error from '@routes/error'
-import { isDevMode, loadBunEnv } from '@lib/utils'
-import { defaultPort } from '@lib/constants'
-import docs from '@routes/docs'
+import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 
 const app = new Hono()
     // apply individual middleware
@@ -60,7 +61,7 @@ if (isDevMode()) {
 
 // export used by Bun server
 export default {
-    port: parseInt(loadBunEnv('PORT', defaultPort)),
+    port: parseInt(loadBunEnv('PORT', defaultPort), 10),
     fetch: app.fetch,
 }
 

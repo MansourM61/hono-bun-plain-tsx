@@ -26,4 +26,4 @@ const isDevMode = () => {
     return Bun.env.NODE_ENV !== 'production'
 }
 
-export { loadBunEnv, loadNodeEnv, isDevMode }
+export { isDevMode, loadBunEnv, loadNodeEnv }

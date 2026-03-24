@@ -1,7 +1,7 @@
-import { describe, expect, test } from 'vitest'
 import { app } from '@src/index'
 import { testClient } from 'hono/testing'
-import { BodyObj } from '@/src/lib/data'
+import { describe, expect, test } from 'vitest'
+import type { BodyObj } from '@/src/lib/data'
 
 // framework route test
 describe('Framework Routes', () => {

@@ -1,7 +1,7 @@
-import { defineConfig } from '@rcmade/hono-docs'
-import { loadNodeEnv } from '@lib/utils'
 import { defaultPort } from '@lib/constants'
-import { name, version, openapi } from '@/package.json'
+import { loadNodeEnv } from '@lib/utils'
+import { defineConfig } from '@rcmade/hono-docs'
+import { name, openapi, version } from '@/package.json'
 
 // configure generation of OpenAPi documentation
 export default defineConfig({

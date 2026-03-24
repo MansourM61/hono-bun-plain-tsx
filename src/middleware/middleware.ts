@@ -32,7 +32,7 @@ const custIndMiddleware = createMiddleware(async (_c, next) => {
 
 // custom middleware with parameter
 const custBundledMiddlewareWithParam = (message: string) => {
-    return createMiddleware(async (c, next) => {
+    return createMiddleware(async (_c, next) => {
         // middleware start: called before the handler
         //...
         console.log(message)

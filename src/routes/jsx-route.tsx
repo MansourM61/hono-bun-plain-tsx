@@ -7,7 +7,7 @@ import type { FC } from 'hono/jsx'
 // layout component
 const Layout: FC = (props) => {
     return (
-        <html>
+        <html lang="en-GB">
             <body>{props.children}</body>
         </html>
     )
