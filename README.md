@@ -23,3 +23,13 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 17. Build scripts are added to `package.json` (commit: `Build scripts are added.`).
 18. OpenAPI documentation generation is added.
 19. Scalar and Swagger UIs are added (commit: `OpenAPI documentation generation, and scalar/swagger UI are added.`).
+20. Biome is configured as the linter and formatter.
+
+## Instruction
+
+1. All library files are placed in `src/lib`, and can be imported using `@lib/` prefix.
+2. Middlewares are located in `src/middleware`, and accessed by `@middleware/` prefix in the main script.
+3. Routes are all placed in `src/routes` folder and accessed by `@routes/`.
+4. The routes export `app` which is used in the main script to define a route.
+5. The type of `app` is also exported and used to generate OpenAPI documentation.
+6. The OpenAPI documentation is configured in `hono.docs.ts` file, where the details of all required routes and endpoints are added manually.

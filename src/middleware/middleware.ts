@@ -50,6 +50,8 @@ const app = new Hono()
     .use(custBundledMiddleware)
     .use(custBundledMiddlewareWithParam('bundled middleware 2'))
 
+// export individual middleware
 export { custIndMiddleware }
 
+// export bundled middlewares
 export default app

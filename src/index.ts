@@ -1,7 +1,6 @@
 /**
  * Server entry point
  */
-
 import { defaultPort } from '@lib/constants'
 import { isDevMode, loadBunEnv } from '@lib/utils'
 import middleware, { custIndMiddleware } from '@middleware/middleware'

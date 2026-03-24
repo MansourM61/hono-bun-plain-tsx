@@ -1,3 +1,4 @@
+/** OpenAPI Configuration File */
 import { defaultPort } from '@lib/constants'
 import { loadNodeEnv } from '@lib/utils'
 import { defineConfig } from '@rcmade/hono-docs'

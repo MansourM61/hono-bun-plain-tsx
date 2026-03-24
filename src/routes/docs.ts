@@ -1,7 +1,6 @@
 /**
  * Documentation generator based on OpenAPI/Swagger
  */
-
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { swaggerUI } from '@hono/swagger-ui'
