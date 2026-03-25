@@ -36,6 +36,6 @@
     },
     /** source files */
     "file": ["./src/index.ts", "./hono.docs.ts"],
-    "include": ["./src/**/*.ts", "hono.docs.ts"],
-    "exclude": ["src/**/*.test.*"]
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["src/**/*.test.*", "test/", "dist/"]
 }

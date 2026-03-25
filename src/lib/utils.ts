@@ -23,7 +23,11 @@ const loadNodeEnv = (envVal: string, envDef: string) => {
 
 // returns false in `development` mode (only for `Bun`)
 const isDevMode = () => {
-    return Bun.env.NODE_ENV !== 'production'
+    if (typeof Bun === 'undefined') {
+        return true
+    } else {
+        return Bun.env.NODE_ENV !== 'production'
+    }
 }
 
 export { isDevMode, loadBunEnv, loadNodeEnv }

@@ -30,6 +30,7 @@
         "bradlc.vscode-tailwindcss",
         "alefragnani.separators",
         "vitest.explorer",
-        "psulek-solo.typedoc-live-preview"
+        "psulek-solo.typedoc-live-preview",
+        "biomejs.biome"
     ]
 }
