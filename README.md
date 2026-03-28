@@ -24,6 +24,7 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 18. OpenAPI documentation generation is added.
 19. Scalar and Swagger UIs are added (commit: `OpenAPI documentation generation, and scalar/swagger UI are added.`).
 20. Biome is configured as the linter and formatter.
+21. Documentation based on TypeDoc is added (commit: `TypeDoc documentation is added.`).
 
 ## Instruction
 

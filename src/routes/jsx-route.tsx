@@ -8,7 +8,12 @@ import type { FC } from 'hono/jsx'
 const Layout: FC = (props) => {
     return (
         <html lang="en-GB">
-            <body>{props.children}</body>
+            <body>
+                {
+                    // biome-ignore lint: Biome does not like this. However, TypeScript recommands this.
+                    props['children']
+                }
+            </body>
         </html>
     )
 }
