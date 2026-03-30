@@ -34,6 +34,7 @@ const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
 
 // GET method handler
 // response: converted JSX
+// To test the JSX, go to `<server-url>/extra`
 const app = new Hono().get('/', (c) => {
     const messages = ['Bun', 'Hono', 'Vite', 'React']
     return c.html(<Top messages={messages} />)

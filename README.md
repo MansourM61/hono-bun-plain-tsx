@@ -19,12 +19,13 @@ Hono-based framework fully based on Bun with support for TypeScript syntax and T
 13. `.env` files are added.
 14. Separate files for functions, data types, constants are created in `@lib` folder.
 15. Global and local error handlers are added.
-16. GLobal and local handlers to deal with page-not-found events (commit: `.env files are added; local and global error handling and `Not Found` are added; local and global CORS are added; code is tidied up.`).
+16. GLobal and local handlers to deal with page-not-found events (commit: `.env files are added; local and global error handling and \`Not Found\` are added; local and global CORS are added; code is tidied up.`).
 17. Build scripts are added to `package.json` (commit: `Build scripts are added.`).
 18. OpenAPI documentation generation is added.
 19. Scalar and Swagger UIs are added (commit: `OpenAPI documentation generation, and scalar/swagger UI are added.`).
 20. Biome is configured as the linter and formatter.
 21. Documentation based on TypeDoc is added (commit: `TypeDoc documentation is added.`).
+22. Favicon added to "/param/:username" along with more documentation in the code. (commit: `Favicon added along with more documentation in the code.`).
 
 ## Instruction
 

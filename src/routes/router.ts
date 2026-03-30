@@ -11,20 +11,31 @@ import { basePath, baseRoutePath, matchedRoutes, routePath } from 'hono/route'
 import { validator } from 'hono/validator'
 
 /** Route Handlers */
+// All the handlers are accessible through `<server-url>/`
 const app = new Hono()
     // GET method handler
     // response: plain text
+    // To test, goto `<server-url>/`
     .get('/', (c) => {
         return c.text('Hello Hono!')
     })
 
     // GET method with parameter handler
     // response: HTML
+    // To test, goto `<server-url>/param/:username`
     .get('/param/:username', (c) => {
         const { username } = c.req.param()
         return c.html(
             html`<!doctype html>
-                <h1>Hello! ${username}!</h1>`
+                <html>
+                <head>
+                    <title>My Page Title</title>
+                    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+                </head>
+                <body>
+                    <h1>Hello! ${username}!</h1>
+                </body>
+                </html>`
         )
     })
 
@@ -34,6 +45,7 @@ const app = new Hono()
     // GET method handler
     // response: JSON
     // route helpers included
+    // To test, post the data to `<server-url>/posts/:id`
     .get('/posts/:id', (c) => {
         return c.json({
             routePath: routePath(c), // '/posts/:id'
@@ -46,6 +58,7 @@ const app = new Hono()
     // POST method handler
     // response: JSON
     // validate body and query parameter
+    // To test, post the data to `<server-url>/api`
     .post(
         '/api',
         // Validate the JSON body

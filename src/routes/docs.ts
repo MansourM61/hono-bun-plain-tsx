@@ -7,6 +7,7 @@ import { swaggerUI } from '@hono/swagger-ui'
 import { Scalar } from '@scalar/hono-api-reference'
 import { Hono } from 'hono'
 
+// To access the documentation, goto `<server-url>/doc/swagger` or `<server-url>/doc/scalar`
 const app = new Hono()
     // OpenAPI Swagger UI
     .get(

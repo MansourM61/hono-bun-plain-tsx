@@ -1,9 +1,13 @@
 /**
  * Error handling at local route
  * Catching uncaught errors + dealing with `Not Found` event.
+ *
+ * Here we catch these errors that happen locally. Each route can have a handler based on this template to deal with these errors individually.
+ * The top level error handler and `Not Found` page deals with all errors that are not caught locally.
  */
 import { Hono } from 'hono'
 
+// To test the error handler, go to `<server-url>/error`
 const app = new Hono()
     .get('/', (c) => {
         if (Math.random() < 0.5) {

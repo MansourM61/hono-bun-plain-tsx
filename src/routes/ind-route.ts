@@ -1,5 +1,7 @@
 /**
  * Individual route tha contains separated middlewares and route handler
+ *
+ * Additionally, each route can also include its error handler and `Not Found` page based on the given template in `error.ts`.
  */
 import { Hono } from 'hono'
 import { createFactory } from 'hono/factory'
@@ -21,6 +23,7 @@ const middleware = factory.createMiddleware(async (_c, next) => {
 })
 
 // bundled handler for this individual route
+// To test the bundle, go to `<server-url>/ind/route`
 const handlers = factory.createHandlers(logger(), middleware, (c) => {
     return c.text('Independent Route with middleware, handler, etc')
 })

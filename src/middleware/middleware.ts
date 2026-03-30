@@ -1,5 +1,8 @@
 /**
- * Middlewares defined individually or as a bundle
+ * Middlewares defined individually or as a bundle.
+ *
+ * This is a demo for custom middleware that is in a separate reusable module, rather than being directly implemented within `app.use()`.
+ *
  */
 import { Hono } from 'hono'
 import { createMiddleware } from 'hono/factory'

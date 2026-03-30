@@ -11,6 +11,7 @@ const staticServer = await (isNodeEnv
 // static file server used as a middleware
 export default () =>
     // serve `public` folder as the `/static` route
+    // for this demo, go to <server-url>/static/sample.txt
     staticServer.serveStatic({
         root: './',
         rewriteRequestPath: (path) => path.replace(/^\/static/, '/public'),
